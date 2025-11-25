@@ -135,6 +135,7 @@ nav a.active::after {
     padding: 8px 20px;
     border-radius: 30px;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     border: 1px solid rgba(255,255,255,0.1);
@@ -197,7 +198,9 @@ h1 {
     
     /* Optional: Adds a subtle gradient to the text for a metallic feel */
     background: -webkit-linear-gradient(#fff, #ccc);
+    background: linear-gradient(#fff, #ccc);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     
     /* Drop shadow to separate it from the background */
@@ -332,6 +335,7 @@ h1 {
     padding: 10px 20px;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 40px;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -387,6 +391,7 @@ h1 {
     height: 100%;
     background: rgba(0, 0, 0, 0.9); /* Deep dark backdrop */
     backdrop-filter: blur(8px); /* Blurs the website behind the video */
+    -webkit-backdrop-filter: blur(8px);
     z-index: 1000;
     display: flex;
     justify-content: center;
