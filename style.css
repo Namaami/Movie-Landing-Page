@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap');
+/* Import Roboto with extra weights (700/900) for bold titles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    height: 100vh;
+    
+    /* CHANGED: Allows vertical scrolling */
+    overflow-y: auto; 
+    overflow-x: hidden;
+    
+    background-color: #000;
+}
+
+/* Hide the scrollbar (Chrome/Safari/Edge) for a cleaner look */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for Firefox */
+body {
+    scrollbar-width: none;
+}
+
+.background-image {
+    /* CHANGED: Fixed means it won't scroll with the page */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('Images/squid\ game.jpeg') no-repeat center center/cover;
+    z-index: -2;
+    animation: breathe 20s ease-in-out infinite alternate;
+}
+
+.overlay-gradient {
+    /* CHANGED: Fixed here too */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, #000000 100%);
+    opacity: 0.6;
+    z-index: -1;
+}
+
+/* --- Header (Refactored Layout & Glass Effect) --- */
+header {
+    display: flex;
+    align-items: center; /* Vertically aligns Logo, Links, and Search */
+    padding: 20px 50px;
+    
+    /* Glass Effect */
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    
+    position: relative;
+    z-index: 100;
+    height: 80px; /* Fixed height for stability */
+}
+
+/* 1. Logo - Pushes everything else to the right */
+.logo {
+    /* Switched to Sans-Serif */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900; /* Extra Bold */
+    font-size: 32px;
+    color: #e50914;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-right: auto;
+}
+
+.logo:hover {
+    text-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+}
+
+/* 2. Navigation - Grouped on the right */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Spacing between "Home", "Movie", etc. */
+    margin-right: 40px; /* Spacing between Nav Links and Search Bar */
+}
+
+nav a {
+    text-decoration: none;
+    color: #aaa; /* Neutral Gray */
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase; /* Cleaner, more premium look */
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* 3. Active & Hover State - BRAND CONSISTENCY (Gold) */
+nav a:hover, nav a.active {
+    color: #ffd700; /* Squid Game Gold/Yellow */
+    font-weight: 700;
+    /* Warm Gold Glow instead of clashing Blue */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); 
+}
+
+/* Optional: Adds a small gold dot under the active link */
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: #ffd700;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #ffd700;
+}
+
+/* 4. Search Bar - Remains on the far right */
+.search-bar {
+    background: rgba(255,255,255,0.1); /* More subtle background */
+    padding: 8px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+
+.search-bar:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.3);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    margin-left: 10px;
+    width: 150px;
+    font-size: 13px;
+}
+
+.search-bar i {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* --- Main Content --- */
+main {
+    padding: 40px 60px;
+    
+    /* CHANGED: Allow it to grow taller than the screen if needed */
+    min-height: calc(100vh - 80px);
+    height: auto; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Text Section */
+.hero-text {
+    max-width: 550px;
+    margin-top: 40px; /* Adds 'Air' between Header and Title */
+}
+
+h1 {
+    /* UNIFIED: Now uses the same font family as the rest of the site */
+    font-family: 'Roboto', sans-serif;
+    
+    /* MODERN STYLING */
+    font-weight: 900;       /* Ultra Bold for impact */
+    font-size: 5.5rem;      /* Large and imposing */
+    text-transform: uppercase; /* Standard for modern movie posters */
+    letter-spacing: -2px;   /* Tighter spacing feels more solid/modern */
+    line-height: 0.9;       /* Compact height */
+    
+    margin-bottom: 15px;
+    color: white;
+    
+    /* Optional: Adds a subtle gradient to the text for a metallic feel */
+    background: -webkit-linear-gradient(#fff, #ccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Drop shadow to separate it from the background */
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+
+/* --- Refined Metadata (Uniform & Elegant) --- */
+.meta-tags {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    
+    /* Typography */
+    font-size: 14px;
+    font-weight: 500;       /* Medium weight for clarity */
+    letter-spacing: 0.5px;  /* Slight spacing for a cinematic feel */
+    
+    /* COLOR UNIFICATION */
+    color: #e0e0e0;         /* Uniform Soft White/Light Gray */
+}
+
+/* Force all spans inside (even if they have class="yellow") to follow the uniform color */
+.meta-tags span, 
+.meta-tags .yellow, 
+.meta-tags .red {
+    color: inherit; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Subtle shadow for readability */
+}
+
+/* Make the divider pipe (|) visually recede so it separates without cluttering */
+.meta-tags .divider {
+    margin: 0 15px; /* More breathing room */
+    color: rgba(255, 255, 255, 0.3); /* Dimmed to 30% opacity */
+    font-weight: 300;
+}
+
+/* --- Improved Text Readability --- */
+.description {
+    /* 1. High Contrast Typography */
+    color: #ffffff;       /* Pure White */
+    font-size: 15px;      /* Slightly larger for readability */
+    font-weight: 400;     /* Standard weight (not too thin) */
+    line-height: 1.8;     /* More breathing room between lines */
+    
+    /* 3. Shape & Spacing */
+    padding: 15px 15px;   /* Space inside the box */
+    border-radius: 15px;  /* Smooth corners */
+    margin-bottom: 30px;
+    margin-left: 0px;
+    max-width: 520px;     /* Keeps the text block tidy */
+
+    
+    /* 5. Interaction (Subtle Lift) */
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Optional: Makes it slightly darker/clearer when you hover over it to read */
+.description:hover {
+    /* THE GLASS EFFECT SETTINGS */
+    background: rgba(0, 0, 0, 0.2); /* Dark semi-transparent background */
+    backdrop-filter: blur(15px);    /* Blurs the image behind the header */
+    -webkit-backdrop-filter: blur(15px); /* For Safari browser support */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border at bottom */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transform: translateY(-2px);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.action-buttons button {
+    padding: 12px 35px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Gold/Yellow Button */
+.btn-download {
+    background-color: #ffd700;
+    color: black;
+}
+
+.btn-download:hover {
+    background-color: #ffe44d;
+    /* Strong gold radiation glow */
+    box-shadow: 0 0 20px #ffd700, 0 0 40px rgba(255, 215, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Grey/Glass Button */
+.btn-trailer {
+    background-color: #e0e0e0;
+    color: black;
+}
+
+.btn-trailer:hover {
+    background-color: white;
+    /* Soft white fog glow */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    transform: translateY(-3px);
+}
+/* --- BOTTOM SECTION --- */
+.bottom-container {
+    position: relative; 
+    width: 100%;
+    height: 280px; /* Keeps height for the cards */
+    /* Removed flexbox properties to use absolute positioning instead */
+}
+
+/* --- Updated Bottom Layout --- */
+
+/* 1. CONTROLS (Navigator) - Moved Up */
+.controls-wrapper {
+    position: absolute;
+    left: 60px;
+    
+    /* CHANGED: Moved up from 100px to 150px */
+    bottom: 150px; 
+    
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+    z-index: 10;
+    
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 1. Sleek Arrow Buttons (No longer big white blobs) */
+.control-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6); /* Inactive Gray */
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    color: #ffd700; /* Active Gold */
+    transform: scale(1.2);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* 2. Pagination Pills (Dashes) */
+.pagination-pills {
+    display: flex;
+    gap: 8px;
+}
+
+.pill {
+    display: block;
+    height: 4px;
+    width: 15px; /* Short dash */
+    background-color: rgba(255, 255, 255, 0.2); /* Inactive Dark Gray */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Active Pill State */
+.pill.active {
+    width: 30px; /* Expands when active */
+    background-color: #ffd700; /* Brand Gold */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4); /* Glow */
+}
+
+/* --- NEW: Video Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Deep dark backdrop */
+    backdrop-filter: blur(8px); /* Blurs the website behind the video */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none; /* Hidden by default */
+    transition: opacity 0.4s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    aspect-ratio: 16/9;
+    box-shadow: 0 0 50px rgba(229, 9, 20, 0.3); /* Subtle red glow */
+    transform: scale(0.8);
+    transition: transform 0.4s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1); /* Zoom in effect */
+}
+
+.modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #e50914;
+    transform: rotate(90deg);
+}
+
+/* 3. SLIDER - Narrower & Pushed Right */
+.slider-wrapper {
+    position: absolute;
+    right: 50px;     /* Pinned to Right */
+    bottom: 40px;    /* Aligned with bottom */
+    
+    display: flex;
+    gap: 15px;
+    
+    /* CHANGED: Width 340px = Fits exactly 2 cards. 
+       The "Invisible Line" is now much further to the right. */
+    width: 500px;   
+    
+    overflow-x: hidden; 
+    padding-bottom: 5px;
+    scroll-behavior: smooth;
+    align-items: flex-end;
+    height: 100%;
+}
+
+.slider-wrapper::-webkit-scrollbar { display: none; }
+
+/* THE CARDS - Larger & Highly Rounded */
+.card {
+    min-width: 160px; /* Increased Width */
+    height: 240px;    /* Increased Height */
+    border-radius: 30px; /* Deeply rounded corners */
+    
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(229, 9, 20, 0.6); 
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(transparent, black);
+    padding: 10px;
+    text-align: center;
+}
+
+.text-overlay h4 { font-size: 11px; margin-bottom: 2px; }
+.text-overlay p { font-size: 9px; color: #ccc; }
+
+/* Animation Keyframes */
+@keyframes breathe {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        /* Zooms in 15% over 20 seconds */
+        transform: scale(1.15);
+    }
+}
+

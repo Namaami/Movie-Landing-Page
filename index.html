@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDVD - Squid Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Background Image Layer -->
+    <div class="background-image"></div>
+    <div class="overlay-gradient"></div>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">MDVD</div>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Movie</a>
+            <a href="#">Anime</a>
+            <a href="#">Series</a>
+        </nav>
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="search">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Top Text Section -->
+        <div class="hero-text">
+            <h1>Squid Game</h1>
+            
+            <div class="meta-tags">
+                <span class="yellow">2021</span>
+                <span class="divider">|</span>
+                <span class="yellow">16+</span>
+                <span class="divider">|</span>
+                <span class="yellow">2 Seasons</span>
+                <span class="divider">|</span>
+                <span class="yellow">Drama</span>
+            </div>
+
+            <p class="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum sit ullam facilis aliquam fugiat ab quisquam excepturi, voluptatibus aut. Magni corrupti veritatis quos sint totam incidunt libero beatae in vitae?
+            </p>
+
+            <div class="action-buttons">
+                <button class="btn-download">Download</button>
+                <button class="btn-trailer">Trailer</button>
+            </div>
+        </div>
+
+        <!-- Bottom Interactive Section -->
+        <div class="bottom-container">
+            
+<!-- ... Inside .bottom-container ... -->
+
+<!-- NEW: Unified Control Bar (Arrows + Pagination Pills) -->
+<div class="controls-wrapper">
+    
+    <!-- 1. Sleek Arrows -->
+    <button id="prevBtn" class="control-btn">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    
+    <!-- 2. Pagination Pills (Visual Indicators) -->
+    <div class="pagination-pills">
+        <span class="pill active"></span>
+        <span class="pill"></span>
+        <span class="pill"></span>
+    </div>
+
+    <button id="nextBtn" class="control-btn">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
+</div>
+
+<!-- ... Slider Wrapper stays the same ... -->
+
+<!-- 3. Slider (Keep as is) -->
+<div class="slider-wrapper" id="slider">
+   <!-- Cards... -->
+</div>
+<!-- ... End .bottom-container ... -->
+
+<!-- NEW: Full Screen Video Modal (Paste this at the very bottom of body) -->
+<div id="videoModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeTrailer()">&times;</span>
+        <!-- Squid Game Official Trailer Embed -->
+        <iframe id="youtubeFrame" 
+            src="https://www.youtube.com/embed/oqxAJKy0ii4?enablejsapi=1" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+            <!-- 3. Card Slider -->
+            <div class="slider-wrapper" id="slider">
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
