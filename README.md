@@ -1,23 +1,55 @@
-<h1 align="center" id="title">Movie-Landing-Page</h1>
+# 🎬 Movie Landing Page
 
-<p align="center"><img src="https://socialify.git.ci/Namaami/Movie-Landing-Page/image?font=Source+Code+Pro&amp;language=1&amp;name=1&amp;owner=1&amp;pattern=Transparent&amp;stargazers=1&amp;theme=Dark" alt="project-image"></p>
+![Socialify Banner](https://socialify.git.ci/Namaami/Movie-Landing-Page/image?font=Source+Code+Pro&language=1&name=1&owner=1&pattern=Transparent&stargazers=1&theme=Dark)
 
-<p id="description">This is one of my projects created using HTML5 CSS and JS for displaying a movie landing page website that is clean minimal and smooth.</p>
+A sleek and visually rich **Movie Landing Page** built using **HTML, CSS, and JavaScript**.  
+The project showcases a cinematic UI featuring a highlighted hero section, movie cards, and smooth user interactions.
 
-<h2>🚀 Demo</h2>
+---
 
-[https://s21gvcw0-5500.inc1.devtunnels.ms/](https://s21gvcw0-5500.inc1.devtunnels.ms/)
+## 📑 Table of Contents
+- [Preview](#preview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Screenshots](#screenshots)
+- [Future Enhancements](#future-enhancements)
+- [Contributors](#contributors)
 
-<h2>Project Screenshots:</h2>
+---
 
-<img src="file:///C:/Users/HP/Pictures/Screenshots/Screenshot%20(44).png" alt="project-screenshot" width="1366" height="768/">
+## 🎥 Preview
 
-  
-  
-<h2>💻 Built with</h2>
+Below is a screenshot from the project:
 
-Technologies used in the project:
+![Project Screenshot](/images/preview.png)
 
-*   HTML
-*   CSS
-*   JAVA
+---
+
+## ⭐ Features
+
+- 🎬 **Hero Section** highlighting a featured movie  
+- 🎞️ **Movie Carousel** to showcase multiple movies  
+- 🔍 **Search Bar** for quick UI navigation  
+- 📱 **Fully Responsive** design  
+- ✨ **Modern UI** with smooth transitions and hover effects  
+
+---
+
+## 🛠 Tech Stack
+
+- **HTML5**
+- **CSS3**
+- **JavaScript (Vanilla)**
+
+---
+
+## 📥 Installation
+
+No dependencies required.
+
+```bash
+git clone https://github.com/Namaami/Movie-Landing-Page.git
+cd Movie-Landing-Page
