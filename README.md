@@ -2,6 +2,10 @@
 
 This is a clean, minimal, and smooth landing page website designed specifically for promoting a single movie or a featured film. Built purely with modern front-end technologies, it showcases a responsive and engaging user interface.
 
+## 🖼️ Screenshots
+
+![Screenshot of the Movie Landing Page](Images/preview.png) 
+
 ## 🚀 Live Demo
 
 You can view the live, deployed version of this project here:
@@ -44,18 +48,3 @@ You only need a modern web browser to view this project locally.
     * Locate the `index.html` file in the root directory.
     * Double-click it to open it in your preferred web browser.
 
-## ⚙️ Deployment (Using GitHub Pages)
-
-To publish your project on the web, you can use the **GitHub Pages** feature, which is what the developer in the reel was likely using:
-
-1.  On your GitHub repository page (`Namaami/Movie-Landing-Page`), click the **Settings** tab.
-2.  In the left sidebar, click **Pages**.
-3.  Under the "Build and deployment" section, ensure **Deploy from a branch** is selected.
-4.  Select your primary branch (likely `main` or `master`) and set the folder to `/ (root)`.
-5.  Click **Save**.
-
-Your live website link will appear after a few minutes (e.g., `https://Namaami.github.io/Movie-Landing-Page`).
-
-## 🖼️ Screenshots
-
-*Replace this line with an image of your landing page for quick visualization.*
