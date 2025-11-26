@@ -64,9 +64,12 @@ const movies = [
 
 // --- 2. SELECT DOM ELEMENTS ---
 const bgImage = document.querySelector('.background-image');
+const overlayGradient = document.querySelector('.overlay-gradient');
 const titleEl = document.querySelector('h1');
 const metaEl = document.querySelector('.meta-tags');
 const descEl = document.querySelector('.description');
+const heroText = document.querySelector('.hero-text'); 
+const searchInput = document.querySelector('.search-bar input'); // NEW: Select the search input
 
 const slider = document.getElementById('slider');
 const prevBtn = document.getElementById('prevBtn');
@@ -74,7 +77,7 @@ const nextBtn = document.getElementById('nextBtn');
 const pills = document.querySelectorAll('.pill');
 
 let currentIndex = 0;
-const scrollAmount = 175; // Matched to new CSS card size
+const scrollAmount = 175;
 
 // --- 3. INITIALIZATION: GENERATE CARDS ---
 function initSlider() {
@@ -107,16 +110,19 @@ function initSlider() {
     });
 }
 
-// --- 4. UPDATE FUNCTION ---
+// --- 4. UPDATE FUNCTION (MODIFIED) ---
 function updateHeroSection(index) {
     const movie = movies[index];
-
-    // Fade Out
-    titleEl.style.opacity = '0';
-    descEl.style.opacity = '0';
-    metaEl.style.opacity = '0';
+    
+    // 1. FULL HERO SECTION FADE OUT
+    // We now fade the entire hero-text block and the background elements.
+    heroText.style.opacity = '0';
+    bgImage.style.opacity = '0';
+    overlayGradient.style.opacity = '0'; // Fade out gradient/overlay too
 
     setTimeout(() => {
+        // --- A. CONTENT UPDATE ---
+        
         // Update Text
         titleEl.textContent = movie.title;
         descEl.textContent = movie.description;
@@ -138,12 +144,13 @@ function updateHeroSection(index) {
         bgImage.style.animation = 'none';
         bgImage.offsetHeight; 
         bgImage.style.animation = 'breathe 20s ease-in-out infinite alternate';
-
-        // Fade In
-        titleEl.style.opacity = '1';
-        descEl.style.opacity = '1';
-        metaEl.style.opacity = '1';
-    }, 200);
+        // 2. FULL HERO SECTION FADE IN
+        // Fade In the content and background simultaneously
+        heroText.style.opacity = '1';
+        bgImage.style.opacity = '1';
+        overlayGradient.style.opacity = '0.6'; // Restore the gradient/overlay opacity
+        
+    }, 400); // Wait 400ms for fade out to complete before updating and fading in
 }
 
 // --- 5. ARROW CONTROLS ---
@@ -151,6 +158,17 @@ function updatePills(index) {
     pills.forEach(pill => pill.classList.remove('active'));
     const pillIndex = index % pills.length; 
     if(pills[pillIndex]) pills[pillIndex].classList.add('active');
+}
+
+// NEW FUNCTION: Triggers a CSS animation on the slider
+function triggerSliderTransition(direction) {
+    const animationClass = direction === 'next' ? 'slide-left' : 'slide-right';
+    slider.classList.add(animationClass);
+
+    // Remove the class after the transition duration (must match CSS)
+    setTimeout(() => {
+        slider.classList.remove(animationClass);
+    }, 400); // 400ms to match the CSS transition duration
 }
 
 nextBtn.addEventListener('click', () => {
@@ -163,6 +181,7 @@ nextBtn.addEventListener('click', () => {
     }
     updateHeroSection(currentIndex);
     updatePills(currentIndex);
+    triggerSliderTransition('next'); // CALL THE NEW FUNCTION
 });
 
 prevBtn.addEventListener('click', () => {
@@ -175,7 +194,10 @@ prevBtn.addEventListener('click', () => {
     }
     updateHeroSection(currentIndex);
     updatePills(currentIndex);
+    triggerSliderTransition('prev'); // CALL THE NEW FUNCTION
 });
+
+// ... rest of the script ...
 
 // --- 6. MODAL LOGIC ---
 const trailerBtn = document.querySelector('.btn-trailer');
@@ -198,5 +220,34 @@ modal.addEventListener('click', (e) => {
     }
 });
 
+// --- 7. NEW: SEARCH FUNCTIONALITY ---
+function filterMovies() {
+    const query = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        const title = card.querySelector('.text-overlay h4').textContent.toLowerCase();
+        const genre = card.querySelector('.text-overlay p').textContent.toLowerCase();
+
+        // Check if the title or genre includes the search query
+        if (title.includes(query) || genre.includes(query)) {
+            // Show the card
+            card.classList.remove('hidden-by-search');
+        } else {
+            // Hide the card
+            card.classList.add('hidden-by-search');
+        }
+    });
+
+    // Optional: Scroll back to the start of the slider when searching
+    slider.scrollLeft = 0;
+}
+
+// Attach the filter function to the search input event
+searchInput.addEventListener('keyup', filterMovies);
+
+
 // RUN INITIALIZATION
 initSlider();
+heroText.style.opacity = '1';
+updateHeroSection(currentIndex);

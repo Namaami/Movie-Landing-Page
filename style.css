@@ -39,6 +39,7 @@ body {
     background: url('Images/squid\ game.jpeg') no-repeat center center/cover;
     z-index: -2;
     animation: breathe 20s ease-in-out infinite alternate;
+    transition: opacity 0.4s ease-in-out; /* ADD THIS LINE */
 }
 
 .overlay-gradient {
@@ -51,6 +52,7 @@ body {
     background: radial-gradient(circle at center, transparent 0%, #000000 100%);
     opacity: 0.6;
     z-index: -1;
+    transition: opacity 0.4s ease-in-out; /* ADD THIS LINE */
 }
 
 /* --- Header (Refactored Layout & Glass Effect) --- */
@@ -180,6 +182,7 @@ main {
 .hero-text {
     max-width: 550px;
     margin-top: 40px; /* Adds 'Air' between Header and Title */
+    transition: opacity 0.4s ease-in-out;
 }
 
 h1 {
@@ -482,6 +485,10 @@ h1 {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
+.card .text-overlay {
+    transition: opacity 0.1s ease; 
+}
+
 .card img {
     width: 100%;
     height: 100%;
@@ -500,6 +507,29 @@ h1 {
 .text-overlay h4 { font-size: 11px; margin-bottom: 2px; }
 .text-overlay p { font-size: 9px; color: #ccc; }
 
+/* --- NEW: Search Filter Style --- */
+
+/* Class added by JS to hide cards that don't match the search query */
+.card.hidden-by-search {
+    /* 1. Animation Effect: Fade and Shrink */
+    opacity: 0;
+    transform: scale(0.5) translateY(20px); /* Shrink and slide down slightly */
+    pointer-events: none; 
+    
+    /* 2. Collapse Card Space: This helps surrounding cards shift */
+    min-width: 0px; 
+    height: 0px;
+    
+    /* 3. Remove Gaps: Crucial to make the visible cards move closer together */
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+/* Hide the text content immediately when the card starts shrinking */
+.card.hidden-by-search .text-overlay {
+    opacity: 0;
+}
+
 /* Animation Keyframes */
 @keyframes breathe {
     0% {
@@ -511,3 +541,48 @@ h1 {
     }
 }
 
+/* --- NEW: SLIDER TRANSITION ANIMATIONS --- */
+
+/* Keyframe for sliding in from the right */
+@keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        /* Start off-screen to the right by half a card width */
+        transform: translateX(50%); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Keyframe for sliding in from the left (for previous button) */
+@keyframes slide-in-left {
+    0% {
+        opacity: 0;
+        /* Start off-screen to the left by half a card width */
+        transform: translateX(-50%); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Apply the animation when the JS adds the class */
+.slider-wrapper.slide-left .card,
+.slider-wrapper.slide-right .card {
+    /* Set animation state */
+    opacity: 0; 
+    transform: translateX(0);
+    /* Disable default card transition during the controlled slide animation */
+    transition: none; 
+}
+
+.slider-wrapper.slide-left .card {
+    animation: slide-in-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.slider-wrapper.slide-right .card {
+    animation: slide-in-right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
