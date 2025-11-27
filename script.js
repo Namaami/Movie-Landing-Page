@@ -51,14 +51,14 @@ const movies = [
         cardImg: "Images/House Of The Dragon.jpeg"
     },
     {
-        title: "Wolf of Wall Street",
-        year: "2013",
+        title: "Jujutsu Kaisen",
+        year: "2020",
         age: "18+",
-        duration: "3h 0m",
-        genre: "Crime",
-        description: "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
-        bg: "Images/Wolf Of Wall Street.jpeg",
-        cardImg: "Images/Wolf-Of-Wall-Street.jpeg"
+        duration: "2 Seasons",
+        genre: "Shonen",
+        description: "Jujutsu Kaisen is a Japanese manga and anime series about a high school student named Yuji Itadori who becomes the host for a powerful demon, Ryomen Sukuna, after swallowing one of his cursed fingers. ",
+        bg: "Images/jjk.jpg",
+        cardImg: "Images/jjk-.jpg"
     }
 ];
 
