@@ -10,7 +10,7 @@ This is a clean, minimal, and smooth landing page website designed specifically 
 
 You can view the live, deployed version of this project here:
 
-🔗 **[View Live Demo](https://namaami.github.io/Movie-Landing-Page)** *(Note: Please update this link after you deploy your page using GitHub Pages.)*
+🔗 **[View Live Demo](https://namaami.github.io/Movie-Landing-Page)** 
 
 ## ✨ Features
 
